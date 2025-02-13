@@ -5,7 +5,9 @@ OBJS		= ${SRCS:.c=.o}
 NAME		= fdf
 
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -I$(LIBFT_DIR) -I$(MLX_DIR)
+LDFLAGS		= -L$(LIBFT_PATH) -L$(MLX_PATH)
+LDLIBS		= -lmlx -lft -lXext -lX11 -lm
 
 LIBFT_PATH	= libft
 LIBFT		= $(LIBFT_PATH)/libft.a
@@ -13,7 +15,7 @@ MLX_PATH	= minilibx
 MLX			= $(MLX_PATH)/libmlx.a
 
 $(NAME):	$(LIBFT) $(MLX) ${OBJS}
-			${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${LIBFT} ${MLX}
+			${CC} ${CFLAGS} -o ${NAME} ${OBJS} $(LDFLAGS) $(LDLIBS)
 
 $(LIBFT):
 			make -C $(LIBFT_PATH)
