@@ -1,5 +1,8 @@
-SRCS		= main.c
+SRC			= main.c \
+			hooks.c
 
+
+SRCS		= $(addprefix src/, $(SRC))
 OBJS		= ${SRCS:.c=.o}
 
 NAME		= fdf
