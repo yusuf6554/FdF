@@ -2,8 +2,7 @@ SRC			= main.c \
 			hooks.c \
 			base_func.c \
 			colors.c \
-			colors2.c \
-			shapes.c
+			draw.c
 
 
 SRCS		= $(addprefix src/, $(SRC))

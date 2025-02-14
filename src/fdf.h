@@ -6,7 +6,7 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 21:18:55 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/14 15:14:52 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/14 15:55:39 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # include "../minilibx/mlx.h"
 # include "../libft/libft.h"
 # include <stdlib.h>
+
+# define KEY_ESC 65307
+
+# define WIN_WIDTH 1600
+# define WIN_HEIGHT 900
+# define WIN_TITLE "FdF"
 
 typedef struct s_data
 {
@@ -47,15 +53,15 @@ int				key_press(int keycode, t_vars *vars);
 int				window_resized(t_vars *vars);
 int				mouse_enter(int x, int y, t_vars *vars);
 int				mouse_exit(int x, int y, t_vars *vars);
-void			put_square(t_data *img, t_point pos, int size, int color);
-void			put_circle(t_data *img, t_point pos, int radius, int color);
-void			put_hexagon(t_data *img, t_point pos, int size, int color);
 void			put_rect(t_data *img, t_point pos, t_point size, int color);
-void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void			put_pixel(t_data *img, int x, int y, int color);
+void			draw_line(t_vars *vars, t_point point1, t_point point2,
+					int color);
 int				get_trgb(int t, int r, int g, int b);
 unsigned char	get_t(int trgb);
 unsigned char	get_r(int trgb);
 unsigned char	get_g(int trgb);
 unsigned char	get_b(int trgb);
+int				ft_abs(int n);
 
 #endif
