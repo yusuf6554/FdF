@@ -6,7 +6,7 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 21:18:55 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/14 15:55:39 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/14 18:48:21 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,9 @@ int				mouse_enter(int x, int y, t_vars *vars);
 int				mouse_exit(int x, int y, t_vars *vars);
 void			put_rect(t_data *img, t_point pos, t_point size, int color);
 void			put_pixel(t_data *img, int x, int y, int color);
-void			draw_line(t_vars *vars, t_point point1, t_point point2,
+void			draw_line(t_data *img, t_point point1, t_point point2,
 					int color);
+void			set_point(t_point *point, int x, int y);
 int				get_trgb(int t, int r, int g, int b);
 unsigned char	get_t(int trgb);
 unsigned char	get_r(int trgb);

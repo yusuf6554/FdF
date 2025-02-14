@@ -6,7 +6,7 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 13:32:06 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/14 14:24:27 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/14 18:55:29 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	window_resized(t_vars *vars)
 	if (first_launch == 1)
 		first_launch = 0;
 	else
-		ft_putendl_fd("Window resized", 1);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 13:48:06 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/14 15:55:23 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/14 18:42:02 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	put_rect(t_data *img, t_point pos, t_point size, int color)
 	}
 }
 
-void	draw_line(t_vars *vars, t_point point1, t_point point2,
+void	draw_line(t_data *img, t_point point1, t_point point2,
 	int color)
 {
 	int		step;
@@ -59,7 +59,7 @@ void	draw_line(t_vars *vars, t_point point1, t_point point2,
 	i = 0;
 	while (i <= step)
 	{
-		put_pixel(&(vars->img), (int)x, (int)y, color);
+		put_pixel(img, (int)x, (int)y, color);
 		x += (double)(point2.x - point1.x) / (double)step;
 		y += (double)(point2.y - point1.y) / (double)step;
 		i++;
