@@ -6,7 +6,7 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 21:18:55 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/14 15:04:01 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/14 15:14:52 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_point
 
 void			init_vars(t_vars *vars);
 void			init_hooks(t_vars *vars);
+void			destroy_mlx(t_vars *vars);
 int				quit_app(t_vars *vars);
 int				key_press(int keycode, t_vars *vars);
 int				window_resized(t_vars *vars);

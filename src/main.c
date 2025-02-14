@@ -6,7 +6,7 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:28:33 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/14 15:11:45 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/14 15:18:36 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,10 @@ int	main(void)
 	t_vars	vars;
 
 	init_vars(&vars);
-	vars.img.img = mlx_new_image(vars.mlx, 1600, 900);
-	vars.img.addr = mlx_get_data_addr(vars.img.img, &vars.img.bits_per_pixel,
-			&vars.img.line_length, &vars.img.endian);
 	draw_shapes(&vars.img);
 	mlx_put_image_to_window(vars.mlx, vars.win, vars.img.img, 0, 0);
 	init_hooks(&vars);
 	mlx_loop(vars.mlx);
-	mlx_destroy_image(vars.mlx, vars.img.img);
-	mlx_destroy_window(vars.mlx, vars.win);
-	mlx_destroy_display(vars.mlx);
-	free(vars.mlx);
+	destroy_mlx(&vars);
 	return (0);
 }
