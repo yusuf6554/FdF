@@ -6,7 +6,7 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 13:48:06 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/14 13:52:49 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/14 14:09:15 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,24 @@ void	put_hexagon(t_data *img, t_point pos, int size, int color)
 			}
 			else if (i >= size / 2 - size / 4 && i <= size / 2 + size / 4)
 				my_mlx_pixel_put(img, pos.x + i, pos.y + j, color);
+			j++;
+		}
+		i++;
+	}
+}
+
+void	put_rect(t_data *img, t_point pos, t_point size, int color)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < size.x)
+	{
+		j = 0;
+		while (j < size.y)
+		{
+			my_mlx_pixel_put(img, pos.x + i, pos.y + j, color);
 			j++;
 		}
 		i++;
