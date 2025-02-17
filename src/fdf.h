@@ -6,7 +6,7 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 21:18:55 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/14 18:48:21 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/17 17:15:35 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include "../minilibx/mlx.h"
 # include "../libft/libft.h"
 # include <stdlib.h>
+
+# define BUFFER_SIZE 50000
+# define DEFAULT_COLOR 0x00FFFFFF
 
 # define KEY_ESC 65307
 
@@ -44,6 +47,13 @@ typedef struct s_point
 	int	x;
 	int	y;
 }			t_point;
+
+typedef struct s_point_3d
+{
+	int	x;
+	int	y;
+	int	z;
+}			t_point_3d;
 
 void			init_vars(t_vars *vars);
 void			init_hooks(t_vars *vars);
