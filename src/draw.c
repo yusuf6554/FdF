@@ -6,7 +6,7 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 13:48:06 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/14 18:42:02 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/18 13:26:04 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,6 @@ void	put_pixel(t_data *img, int x, int y, int color)
 	{
 		dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
 		*(unsigned int *)dst = color;
-	}
-}
-
-void	put_rect(t_data *img, t_point pos, t_point size, int color)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < size.x)
-	{
-		j = 0;
-		while (j < size.y)
-		{
-			put_pixel(img, pos.x + i, pos.y + j, color);
-			j++;
-		}
-		i++;
 	}
 }
 

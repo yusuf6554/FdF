@@ -6,14 +6,14 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 14:18:04 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/17 17:12:05 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/18 13:28:37 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char		*str_final;
 	size_t		len1;

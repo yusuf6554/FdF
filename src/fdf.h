@@ -6,7 +6,7 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 21:18:55 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/17 17:15:35 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/18 13:26:08 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int				key_press(int keycode, t_vars *vars);
 int				window_resized(t_vars *vars);
 int				mouse_enter(int x, int y, t_vars *vars);
 int				mouse_exit(int x, int y, t_vars *vars);
-void			put_rect(t_data *img, t_point pos, t_point size, int color);
 void			put_pixel(t_data *img, int x, int y, int color);
 void			draw_line(t_data *img, t_point point1, t_point point2,
 					int color);
@@ -74,5 +73,11 @@ unsigned char	get_r(int trgb);
 unsigned char	get_g(int trgb);
 unsigned char	get_b(int trgb);
 int				ft_abs(int n);
+void			ft_free_split(char **split);
+unsigned int	ft_atoi_base_16(char *str);
+char			*ft_read_map_file(char *map_filename);
+unsigned long	ft_proc_map_pts(char *pt);
+unsigned long	*ft_line_to_array(char *line);
+unsigned long	**ft_map_to_full_array(char *file);
 
 #endif
