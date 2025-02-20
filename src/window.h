@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/18 13:12:59 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/20 14:01:17 by yukoc            ###   ########.fr       */
+/*   Created: 2025/02/20 13:27:04 by yukoc             #+#    #+#             */
+/*   Updated: 2025/02/20 14:45:59 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef WINDOW_H
+# define WINDOW_H
 
-void	ft_free_split(char **split)
+# define KEY_ESC 65307
+
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
+# define PADDED_WIDTH 1800
+# define PADDED_HEIGHT 900
+# define WIN_TITLE "FdF"
+
+typedef struct s_mlx
 {
-	int	i;
+	void	*mlx;
+	void	*win;
+	void	*img;
+}			t_mlx;
 
-	i = 0;
-	while (split[i])
-	{
-		free(split[i]);
-		i++;
-	}
-	free(split);
-}
-
-void	ft_free_map(unsigned long **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-	{
-		free(map[i]);
-		i++;
-	}
-	free(map);
-}
+#endif

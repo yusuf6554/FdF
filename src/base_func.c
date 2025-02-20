@@ -6,36 +6,40 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 13:48:24 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/14 18:49:20 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/20 13:56:27 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "mlx.h"
 
-void	init_vars(t_vars *vars)
+int	init_vars(t_vars *vars)
 {
-	vars->mlx = mlx_init();
-	vars->win = mlx_new_window(vars->mlx, WIN_WIDTH, WIN_HEIGHT, WIN_TITLE);
-	vars->img.img = mlx_new_image(vars->mlx, WIN_WIDTH, WIN_HEIGHT);
-	vars->img.addr = mlx_get_data_addr(vars->img.img,
-			&(vars->img.bits_per_pixel),
-			&(vars->img.line_length),
-			&(vars->img.endian));
+	vars->mlx->mlx = mlx_init();
+	if (!vars->mlx->mlx)
+		return (1);
+	vars->mlx->win = mlx_new_window(vars->mlx->mlx, WIN_WIDTH, WIN_HEIGHT,
+			WIN_TITLE);
+	if (!vars->mlx->win)
+	{
+		mlx_destroy_display(vars->mlx->mlx);
+		return (1);
+	}
+	vars->mlx->img = mlx_new_image(vars->mlx->mlx, WIN_WIDTH, WIN_HEIGHT);
+	if (!vars->mlx->img)
+	{
+		mlx_destroy_window(vars->mlx->mlx, vars->mlx->win);
+		mlx_destroy_display(vars->mlx->mlx);
+		return (1);
+	}
+	vars->data_addr = mlx_get_data_addr(vars->mlx->img, &vars->bits_per_pixel,
+			&vars->line_size, &vars->endian);
+	return (0);
 }
 
-void	init_hooks(t_vars *vars)
+void	destroy_mlx(t_mlx *mlx)
 {
-	mlx_hook(vars->win, 33, 1L << 17, quit_app, vars);
-	mlx_key_hook(vars->win, key_press, vars);
-	mlx_expose_hook(vars->win, window_resized, vars);
-	mlx_hook(vars->win, 7, 1L << 4, mouse_enter, vars);
-	mlx_hook(vars->win, 8, 1L << 5, mouse_exit, vars);
-}
-
-void	destroy_mlx(t_vars *vars)
-{
-	mlx_destroy_image(vars->mlx, vars->img.img);
-	mlx_destroy_window(vars->mlx, vars->win);
-	mlx_destroy_display(vars->mlx);
-	free(vars->mlx);
+	mlx_destroy_image(mlx->mlx, mlx->img);
+	mlx_destroy_window(mlx->mlx, mlx->win);
+	mlx_destroy_display(mlx->mlx);
 }

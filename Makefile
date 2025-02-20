@@ -1,9 +1,15 @@
-SRC			= main.c \
-			hooks.c \
-			base_func.c \
+SRC			= base_func.c \
 			colors.c \
 			draw.c \
-			math.c
+			extra_func.c \
+			free.c \
+			hooks.c \
+			main.c \
+			math.c \
+			perspective.c \
+			read.c \
+			render_main.c \
+			render_point.c
 
 
 SRCS		= $(addprefix src/, $(SRC))
@@ -12,7 +18,7 @@ OBJS		= ${SRCS:.c=.o}
 NAME		= fdf
 
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -I$(LIBFT_DIR) -I$(MLX_DIR)
+CFLAGS		= -Wall -Wextra -Werror -I$(LIBFT_PATH) -I$(MLX_PATH)
 LDFLAGS		= -L$(LIBFT_PATH) -L$(MLX_PATH)
 LDLIBS		= -lmlx -lft -lXext -lX11 -lm
 

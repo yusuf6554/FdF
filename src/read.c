@@ -6,11 +6,12 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:05:20 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/18 13:25:30 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/20 15:04:10 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "libft.h"
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -27,16 +28,16 @@ char	*ft_read_map_file(char *map_filename)
 	if (fd < 0)
 		return (NULL);
 	ret = 1;
-	map = ft_strdup("");
+	map = NULL;
 	while (ret)
 	{
 		line = malloc(BUFFER_SIZE + 1);
 		if (!line)
 			return (free(map), write(STDERR_FILENO,
-				"Memory allocation failed", 24), NULL);
+					"Memory allocation failed", 24), NULL);
 		ret = read(fd, line, BUFFER_SIZE);
 		if (ret < 0)
-			return (free(map), write(STDERR_FILENO, "Read error", 18), NULL);
+			return (free(map), write(STDERR_FILENO, "Read error", 11), NULL);
 		line[ret] = '\0';
 		map = ft_strjoin(map, line);
 		if (!map)
@@ -80,7 +81,7 @@ unsigned long	*ft_line_to_array(char *line)
 	if (!res)
 		return (NULL);
 	i = 0;
-	while (i < len)
+	while (pts[i])
 	{
 		res[i] = ft_proc_map_pts(pts[i]);
 		i++;

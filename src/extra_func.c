@@ -6,11 +6,11 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:15:57 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/18 13:24:31 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/20 13:51:58 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "libft.h"
 
 size_t	ft_array_len(unsigned long *arr)
 {

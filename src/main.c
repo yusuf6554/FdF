@@ -6,37 +6,66 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:28:33 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/18 13:26:20 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/20 14:36:24 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "mlx.h"
+#include <limits.h>
+#include <unistd.h>
+#include <stdlib.h>
 
-void	draw_lines(t_data *img)
+void	fdf_main(t_vars *vars)
 {
-	t_point	start;
-	t_point	end;
-
-	set_point(&start, 100, 100);
-	set_point(&end, 150, 170);
-	draw_line(img, start, end, get_trgb(0, 255, 255, 255));
-	set_point(&start, 200, 100);
-	set_point(&end, 150, 170);
-	draw_line(img, start, end, get_trgb(0, 255, 255, 255));
-	set_point(&start, 150, 170);
-	set_point(&end, 150, 300);
-	draw_line(img, start, end, get_trgb(0, 255, 255, 255));
+	mlx_hook(vars->mlx->win, 33, 1L << 17, quit_app, vars);
+	mlx_key_hook(vars->mlx->win, key_press, vars);
+	perspective_parallel(vars);
+	render_map(vars);
+	mlx_loop(vars->mlx->mlx);
 }
 
-int	main(void)
+void	set_map_properties(t_vars *vars)
+{
+	int	i;
+
+	i = 0;
+	while (vars->map[0][i] != ULONG_MAX)
+		i++;
+	vars->line_length = i;
+	vars->anchor_x = i / 2;
+	i = 0;
+	while (vars->map[i] != NULL)
+		i++;
+	vars->line_count = i;
+	vars->anchor_y = i / 2;
+}
+
+int	main(int argc, char **argv)
 {
 	t_vars	vars;
+	t_mlx	mlx;
+	char	*map_str;
 
-	init_vars(&vars);
-	draw_lines(&vars.img);
-	mlx_put_image_to_window(vars.mlx, vars.win, vars.img.img, 0, 0);
-	init_hooks(&vars);
-	mlx_loop(vars.mlx);
-	destroy_mlx(&vars);
+	if (argc != 2)
+	{
+		write(STDERR_FILENO, "Usage: ./fdf <map_file>\n", 24);
+		return (1);
+	}
+	map_str = ft_read_map_file(argv[1]);
+	if (!map_str)
+		return (write(STDERR_FILENO, "Error reading map file\n", 24), 1);
+	vars.map = ft_map_to_full_array(map_str);
+	if (!vars.map)
+		return (write(STDERR_FILENO, "Map is invalid\n", 16), 1);
+	free(map_str);
+	set_map_properties(&vars);
+	vars.mlx = &mlx;
+	if (init_vars(&vars) == 1)
+		return (1);
+	fdf_main(&vars);
+	destroy_mlx(&mlx);
+	free(mlx.mlx);
+	ft_free_map(vars.map);
 	return (0);
 }
