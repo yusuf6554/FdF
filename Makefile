@@ -27,7 +27,7 @@ LIBFT		= $(LIBFT_PATH)/libft.a
 MLX_PATH	= minilibx
 MLX			= $(MLX_PATH)/libmlx.a
 
-$(NAME):	$(LIBFT) $(MLX) ${OBJS}
+$(NAME):	${OBJS} $(LIBFT) $(MLX)
 			${CC} ${CFLAGS} -o ${NAME} ${OBJS} $(LDFLAGS) $(LDLIBS)
 
 $(LIBFT):
