@@ -6,7 +6,7 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:05:20 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/20 15:04:10 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/24 14:11:24 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,6 @@ unsigned long	**ft_map_to_full_array(char *file)
 		res[i] = ft_line_to_array(lines[i]);
 		i++;
 	}
-	res[len] = '\0';
+	res[len] = NULL;
 	return (ft_free_split(lines), res);
 }
