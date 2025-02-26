@@ -6,7 +6,7 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 21:18:55 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/26 15:02:19 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/26 15:45:34 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,25 +71,20 @@ void			set_point_3d(t_point_3d *point, int x, int y, int z);
 unsigned long	get_z(unsigned long data);
 unsigned long	get_color(unsigned long data);
 
-int				get_trgb(int t, int r, int g, int b);
-unsigned char	get_t(int trgb);
-unsigned char	get_r(int trgb);
-unsigned char	get_g(int trgb);
-unsigned char	get_b(int trgb);
-
 void			ft_free_split(char **split);
 void			ft_free_map(unsigned long **map);
 
 size_t			ft_array_len(unsigned long *arr);
 unsigned int	ft_atoi_base_16(char *str);
-char			*mem_and_read_error_func(char *str, int error);
+char			*mem_and_read_error_func(char *str, char *str2, int error);
+int				return_error(int error);
 
 char			*ft_read_map_file(char *map_filename);
 unsigned long	ft_proc_map_pts(char *pt);
 unsigned long	*ft_line_to_array(char *line);
 unsigned long	**ft_map_to_full_array(char *file);
 
-void			perspective_parallel(t_vars *vars);
+void			set_perspective(t_vars *vars);
 
 void			zoom(t_vars *vars, t_point_3d *point);
 void			translate(t_vars *vars, t_point_3d *point);
@@ -101,6 +96,5 @@ void			render_map(t_vars *vars);
 void			render_point(t_vars *vars, t_point_3d *point);
 void			render_and_put_pixel(t_vars *vars, int x, int y,
 					unsigned long data);
-void			draw_background(t_vars *vars);
 
 #endif

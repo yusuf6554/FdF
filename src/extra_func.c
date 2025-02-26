@@ -6,7 +6,7 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:15:57 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/26 14:59:13 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/26 15:45:27 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,28 @@ unsigned int	ft_atoi_base_16(char *str)
 	return (res);
 }
 
-char	*mem_and_read_error_func(char *str, int error)
+char	*mem_and_read_error_func(char *str, char *str2, int error)
 {
 	if (str)
 		free(str);
+	if (str2)
+		free(str2);
 	if (error == 1)
-		write(STDERR_FILENO, "Memory allocation failed", 24);
+		write(STDERR_FILENO, "Memory allocation failed\n", 25);
 	else if (error == 2)
-		write(STDERR_FILENO, "Read error", 10);
+		write(STDERR_FILENO, "Read error\n", 11);
 	return (NULL);
+}
+
+int	return_error(int error)
+{
+	if (error == 1)
+		write(STDERR_FILENO, "Usage: ./fdf <map_file>\n", 24);
+	else if (error == 2)
+		write(STDERR_FILENO, "Error reading map file\n", 23);
+	else if (error == 3)
+		write(STDERR_FILENO, "Map is invalid\n", 15);
+	else if (error == 4)
+		write(STDERR_FILENO, "Memory allocation failed\n", 25);
+	return (1);
 }

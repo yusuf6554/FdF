@@ -6,13 +6,13 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 13:56:16 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/26 15:02:20 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/26 15:35:33 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	perspective_parallel(t_vars *vars)
+void	set_perspective(t_vars *vars)
 {
 	double	width_distance;
 	double	height_distance;

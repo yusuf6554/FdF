@@ -6,7 +6,7 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:05:20 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/26 15:00:43 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/26 15:46:33 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ char	*ft_read_map_file(char *map_filename)
 	{
 		line = malloc(BUFFER_SIZE + 1);
 		if (!line)
-			return (mem_and_read_error_func(map, 1));
+			return (mem_and_read_error_func(map, NULL, 1));
 		ret = read(fd, line, BUFFER_SIZE);
 		if (ret < 0)
-			return (mem_and_read_error_func(map, 2));
+			return (mem_and_read_error_func(map, line, 0));
 		line[ret] = '\0';
 		map = ft_strjoin(map, line);
 		if (!map)
-			return (mem_and_read_error_func(NULL, 1));
+			return (mem_and_read_error_func(line, NULL, 1));
 	}
 	return (map);
 }

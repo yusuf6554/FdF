@@ -6,7 +6,7 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:28:33 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/20 14:36:24 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/26 15:43:54 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	fdf_main(t_vars *vars)
 {
 	mlx_hook(vars->mlx->win, 33, 1L << 17, quit_app, vars);
 	mlx_key_hook(vars->mlx->win, key_press, vars);
-	perspective_parallel(vars);
+	set_perspective(vars);
 	render_map(vars);
 	mlx_loop(vars->mlx->mlx);
 }
@@ -48,21 +48,18 @@ int	main(int argc, char **argv)
 	char	*map_str;
 
 	if (argc != 2)
-	{
-		write(STDERR_FILENO, "Usage: ./fdf <map_file>\n", 24);
-		return (1);
-	}
+		return (return_error(1));
 	map_str = ft_read_map_file(argv[1]);
 	if (!map_str)
-		return (write(STDERR_FILENO, "Error reading map file\n", 24), 1);
+		return (return_error(2));
 	vars.map = ft_map_to_full_array(map_str);
 	if (!vars.map)
-		return (write(STDERR_FILENO, "Map is invalid\n", 16), 1);
+		return (return_error(3));
 	free(map_str);
 	set_map_properties(&vars);
 	vars.mlx = &mlx;
 	if (init_vars(&vars) == 1)
-		return (1);
+		return (return_error(4));
 	fdf_main(&vars);
 	destroy_mlx(&mlx);
 	free(mlx.mlx);

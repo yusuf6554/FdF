@@ -1,5 +1,4 @@
 SRC			= base_func.c \
-			colors.c \
 			draw.c \
 			extra_func.c \
 			free.c \

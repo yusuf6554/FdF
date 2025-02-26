@@ -6,7 +6,7 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 14:01:43 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/20 14:37:30 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/26 15:34:56 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,12 @@ void	render_map(t_vars *vars)
 	int	i;
 	int	j;
 
-	i = 0;
-	while (vars->map[i])
+	i = -1;
+	while (vars->map[++i])
 	{
-		j = 0;
-		while (vars->map[i][j] != ULONG_MAX)
-		{
+		j = -1;
+		while (vars->map[i][++j] != ULONG_MAX)
 			render_and_put_pixel(vars, j, i, vars->map[i][j]);
-			j++;
-		}
-		i++;
 	}
 	mlx_put_image_to_window(vars->mlx->mlx, vars->mlx->win,
 		vars->mlx->img, 0, 0);
@@ -69,19 +65,5 @@ void	render_and_put_pixel(t_vars *vars, int x, int y, unsigned long data)
 		draw_line(vars, (t_point){cur_point.x, cur_point.y},
 			(t_point){top_point.x, top_point.y},
 			get_color(vars->map[y - 1][x]));
-	}
-}
-
-void	draw_background(t_vars *vars)
-{
-	int	*bg;
-	int	i;
-
-	bg = (int *)vars->data_addr;
-	i = 0;
-	while (i < WIN_WIDTH * WIN_HEIGHT)
-	{
-		bg[i] = get_trgb(0, 0, 0, 0);
-		i++;
 	}
 }
