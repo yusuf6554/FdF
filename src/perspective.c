@@ -6,7 +6,7 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 13:56:16 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/20 15:06:19 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/26 15:02:20 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	perspective_parallel(t_vars *vars)
 	vars->y_z_coef = -1;
 	vars->z_x_coef = 0.3;
 	vars->zoom = 1;
-	vars->animate = 0;
 	vars->map_x = 0;
 	vars->map_y = 0;
 	vars->height = 5;

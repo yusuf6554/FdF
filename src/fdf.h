@@ -6,7 +6,7 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 21:18:55 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/20 15:06:51 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/26 15:02:19 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct s_vars
 	t_mlx			*mlx;
 	unsigned long	**map;
 	char			*data_addr;
-	int				animate;
 	int				bits_per_pixel;
 	int				line_size;
 	int				endian;
@@ -83,6 +82,7 @@ void			ft_free_map(unsigned long **map);
 
 size_t			ft_array_len(unsigned long *arr);
 unsigned int	ft_atoi_base_16(char *str);
+char			*mem_and_read_error_func(char *str, int error);
 
 char			*ft_read_map_file(char *map_filename);
 unsigned long	ft_proc_map_pts(char *pt);

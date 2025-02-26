@@ -6,7 +6,7 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 13:32:06 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/20 15:07:10 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/02/26 14:51:04 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	quit_app(t_vars *vars)
 
 int	key_press(int keycode, t_vars *vars)
 {
-	if (keycode == 65307)
+	if (keycode == KEY_ESC)
 	{
 		mlx_loop_end(vars->mlx->mlx);
 	}
