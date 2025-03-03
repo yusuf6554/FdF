@@ -26,6 +26,8 @@ LIBFT		= $(LIBFT_PATH)/libft.a
 MLX_PATH	= minilibx
 MLX			= $(MLX_PATH)/libmlx.a
 
+all:		$(NAME)
+
 $(NAME):	${OBJS} $(LIBFT) $(MLX)
 			${CC} ${CFLAGS} -o ${NAME} ${OBJS} $(LDFLAGS) $(LDLIBS)
 
@@ -34,8 +36,6 @@ $(LIBFT):
 
 $(MLX):
 			make -C $(MLX_PATH)
-
-all:		$(NAME)
 
 clean:
 			rm -f ${OBJS}
