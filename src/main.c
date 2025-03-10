@@ -6,7 +6,7 @@
 /*   By: yukoc <yukoc@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:28:33 by yukoc             #+#    #+#             */
-/*   Updated: 2025/02/26 15:43:54 by yukoc            ###   ########.fr       */
+/*   Updated: 2025/03/10 13:52:49 by yukoc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,10 @@ int	main(int argc, char **argv)
 	set_map_properties(&vars);
 	vars.mlx = &mlx;
 	if (init_vars(&vars) == 1)
+	{
+		ft_free_map(vars.map);
 		return (return_error(4));
+	}
 	fdf_main(&vars);
 	destroy_mlx(&mlx);
 	free(mlx.mlx);
